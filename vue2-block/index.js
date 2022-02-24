@@ -1,4 +1,3 @@
-
 import Vue from 'vue'
 import Block from '@block'
 new Vue({

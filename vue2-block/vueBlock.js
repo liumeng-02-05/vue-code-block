@@ -1,5 +1,4 @@
 'use strict'
-
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 class FooterPlugin {
   constructor(options) {
@@ -23,7 +22,11 @@ class FooterPlugin {
     // compiler.options.resolve.alias['@block'] = './src/index.vue'
     compiler.options.resolve.alias['@block'] = `${process.cwd()}/src/index.vue`
     // 配置入口文件
-    compiler.options.entry.index = require.resolve('./index.js')
+    compiler.options.entry.app.map((item,index) => {
+      if(item === './src/main.js'){
+        compiler.options.entry.app[index] = require.resolve('./index.js')
+      }
+    })
   }
 }
 
